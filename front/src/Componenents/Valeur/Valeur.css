@@ -1,0 +1,66 @@
+
+.v-container>div{
+    flex: 1;
+margin: 3rem;
+overflow: hidden;
+}
+.v-right{
+gap: .5rem;
+font-size: larger;
+ color: rgb(140, 139, 139);
+}
+.accordion{
+margin-top: 2rem;
+border: none;
+}
+.accordionItem{
+    padding: 20px;
+    position: relative;
+    border: .5px solid black;
+    border-radius: 8px;
+     overflow: hidden;
+    margin-bottom: 20px;
+box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+.accordionButton{
+    background-color: white;
+    width: 100%;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 2rem;
+        position: relative;
+    
+        
+}
+.val-image>img{
+        border: 8px solid #f8d149;
+        border-radius: 10px;
+        filter: drop-shadow(3px 3px 0px #c16068) drop-shadow(-3px -3px 0px #488793);
+    width: 30rem;
+    height: 35rem;
+    padding: 10px;
+    
+}
+.icon{
+    padding: .5rem;
+    background-color: #eeeeff;
+    border-radius: 5px;
+
+   
+}
+.left-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    /* Colle à gauche */
+}
+
+.right-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* Colle à droite */
+}
+.icon svg{
+    fill: #5fc1c6;
+}

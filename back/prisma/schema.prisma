@@ -1,0 +1,102 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  username      String   @unique
+  password  String
+  avatar String?
+  role     String  @default("USER") // "USER" ou "ADMIN"
+
+  createdAt DateTime @default(now())
+  trajets Trajet[]
+  message Message[]
+   chats      Chat[]      @relation(fields: [chatIDs], references: [id])
+  chatIDs    String[]    @db.ObjectId
+  isDriverValidated Boolean @default(false) //  Nouveau champ
+   identityCard   String? // Nouveau champ pour la carte d'identité
+  carRegistration String?  // Nouveau champ pour la carte grise
+  vehicleCard    String?  // Nouveau champ pour la carte de véhicule
+}
+
+model Trajet {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String  
+
+  departingDate  DateTime
+  departingLocation String
+  departingTime String
+  arrivalLocation String?
+  seatsAvailable  Int @default(0)
+  price  Float    
+  images String[]
+  status     TrajetStatus   @default(DISPONIBLE)
+  category     TrajetCategory @default(ECONOMIQUE) 
+  
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references:[id])
+  userId String @db.ObjectId
+  trajetDetail  TrajetDetail?
+
+}
+
+enum TrajetStatus {
+  DISPONIBLE
+  COMPLET
+  CANCELLED
+}
+enum TrajetCategory {
+  ECONOMIQUE
+  CONFORT
+  LUXE
+}
+
+model TrajetDetail {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  description       String?
+  pet       String?  // Animaux autorisés ? true/false
+  smoker    String?   // Fumeur autorisé ? true/false
+  music     String?   // Musique autorisée ? true/false
+  ac        String?    // Climatisation dispo ? true/false
+  luggage   String?  // Type de bagages (Petit, Moyen, Grand)
+  discussion String? // Niveau de discussion souhaité ("Silencieux", "Normal", "Bavard")
+  trajet Trajet @relation(fields: [trajetId], references:[id])
+  trajetId String @db.ObjectId @unique
+}
+
+model Message {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  message   String
+  user      User?    @relation(fields: [userId], references: [id])  // Relation optionnelle
+  userId    String?  @db.ObjectId  // userId devient optionnel
+  username  String?
+  email     String?  // Stocke l'email (ou null pour anonymes)
+  createdAt DateTime @default(now())
+  chat      Chat?     @relation(fields: [chatId], references: [id])
+  chatId    String?   @db.ObjectId
+}
+
+
+model Chat {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  users     User[]    @relation(fields: [userIDs], references: [id])
+  userIDs   String[]  @db.ObjectId
+  createdAt DateTime  @default(now())
+  seenBy    String[]  @db.ObjectId
+  messages  Message[]
+    lastMessage String?
+
+}

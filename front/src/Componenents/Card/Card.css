@@ -1,0 +1,98 @@
+.trajet-card-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.trajet-card-container:hover {
+    transform: translateY(-5px);
+}
+
+.trajet-card-img-wrapper {
+    display: block;
+    height: 150px;
+    overflow: hidden;
+}
+
+.trajet-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.trajet-card-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.trajet-card-title a {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.trajet-card-title a:hover {
+    text-decoration: underline;
+}
+
+.trajet-card-location {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.trajet-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+}
+
+.trajet-card-price {
+    color: #4e9fa6;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.trajet-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.trajet-card-features {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.trajet-feature {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.trajet-card-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.trajet-icon-wrapper {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.trajet-icon-wrapper:hover {
+    transform: scale(1.1);
+}

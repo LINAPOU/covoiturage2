@@ -1,0 +1,23 @@
+.h-wrapper{
+    background: linear-gradient(to right, #66c1c3, #e0eee9);}
+.h-container{
+    padding: 1rem ;
+    justify-content:space-between;
+   
+}
+.h-menu{
+gap: 2em;
+}
+.h-menu a{
+ color: white;
+ text-decoration: none;
+ font-weight: bolder;
+}
+
+.h-menu:hover{
+    cursor: pointer;
+}
+.h-menu a:hover{
+transform: scale(1.1);
+text-decoration: underline;
+}

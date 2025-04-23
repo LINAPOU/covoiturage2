@@ -1,0 +1,117 @@
+
+.logSignBackground {
+    margin: 0px;
+    padding: 0px;
+    background-image: url('/public/Driving.gif');
+    background-size:cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+    height: 100vh;
+
+}
+
+.loginPage {
+    padding: 20px;
+    display: flex;
+    height:  510px;
+    overflow: hidden;
+    border-radius: 20px;
+
+   
+}
+
+/* Form container styling */
+.loginFormContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    width: 50%;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(1, 1, 1, 1);
+              background-color: transparent;
+}
+
+.loginFormTitle {
+    font-size: 2rem;
+    color: #66c1c3;
+    animation:alternate;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Input styles */
+.loginInput {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.loginInput:focus {
+    outline: none;
+    border-color: #007BFF;
+    background-color: #f0faff;
+}
+
+/* Button styles */
+.loginButton {
+    width: 100%;
+        padding: 12px;
+    margin-top: 20px;
+    background:#f8d149;   
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.loginButton:hover {
+    background-color: transparent;
+}
+
+/* Error message styling */
+.errorMessage {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Signup link styling */
+.signupLink {
+    display: block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-align: center;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.signupLink:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .loginPage {
+        flex-direction: column;
+    }
+
+    .loginFormContainer{
+        width: 80%;
+        height: 100%;
+    }
+}

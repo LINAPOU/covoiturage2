@@ -1,0 +1,54 @@
+/* 🔥 Srvclient Styles */
+
+/* Conteneur principal */
+.srvclient-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Titre principal */
+.srvclient-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Message s'il n'y a pas de messages */
+.srvclient-no-messages {
+    font-size: 1rem;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Liste des messages */
+.srvclient-message-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Élément d'un message */
+.srvclient-message-item {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Entête du message */
+.srvclient-message-header {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+}
+.srvclient-message-header img{
+ width: 90px;
+}

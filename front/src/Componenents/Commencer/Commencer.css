@@ -1,0 +1,28 @@
+.inner-container{
+    width: 90%;
+    height: 200px;
+    gap: 2rem;
+    background: linear-gradient(to right, #66c1c3, #e0eee9);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-right: 25px;
+}
+.first-text{
+color: white;
+font-size :40px;
+font-weight: bold;
+}
+.second-text {
+    font-weight:bold ;
+    color:#192c4a;
+    font-size: 20px;
+}
+.com-button{
+    width: 100px;
+    padding: 1rem;
+    border: 2px solid white;
+    font-weight: bolder;
+    color: white;
+   
+}

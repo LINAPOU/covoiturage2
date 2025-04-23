@@ -1,0 +1,103 @@
+/* 🔥 Dashboard Styles */
+
+/* Conteneur principal */
+.dashboard-container {
+    padding: 30px;
+    background-color: #f7f7f7;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Titre du Dashboard */
+.dashboard-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Message d'erreur */
+.dashboard-error {
+    color: #e74c3c;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    padding: 10px;
+    background-color: #fdecea;
+    border: 1px solid #e74c3c;
+    border-radius: 6px;
+}
+
+/* Conteneur du tableau */
+.dashboard-table-container {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+/* Style du tableau */
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* En-têtes du tableau */
+.dashboard-table thead {
+    background-color: #f8d149;
+    color: white;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Ligne de suppression (Bouton) */
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Liens */
+.dashboard-links {
+    margin-top: 20px;
+}
+
+.dashboard-link {
+    font-size: 1rem;
+    color: #f8d149;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dashboard-link:hover {
+    text-decoration: underline;
+}
+
+/* 🎯 Responsive Styles */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 20px;
+    }
+
+    .dashboard-table {
+        font-size: 0.9rem;
+    }
+
+    .delete-btn {
+        font-size: 0.85rem;
+    }
+}

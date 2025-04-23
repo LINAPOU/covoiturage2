@@ -1,0 +1,113 @@
+/* 🔥 ListeTrajets Styles — Extra Touch */
+
+.listetrajets-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background: linear-gradient(to right, #66c1c3, #e0eee9);
+    min-height: 100vh;
+}
+
+/* Section principale */
+.listetrajets-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Wrapper list + filtres */
+.listetrajets-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.6s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cartes de trajets */
+.listetrajets-cards {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.listetrajets-cards .card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 6px solid #66c1c3;
+}
+
+.listetrajets-cards .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Texte d'état (chargement, erreur...) */
+.listetrajets-container p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 30px;
+}
+
+/* Filtre sur le côté */
+.filter-container {
+    width: 280px;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.filter-container:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Lien vers la carte */
+.listetrajets-container .map-link {
+    color: #f8d149;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.listetrajets-container .map-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 5px #f8d149;
+}
+
+/* 🧑‍💻 Responsive */
+@media (max-width: 768px) {
+    .listetrajets-wrapper {
+        flex-direction: column;
+    }
+
+    .listetrajets-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-container {
+        width: 100%;
+    }
+}
