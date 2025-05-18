@@ -28,6 +28,8 @@ const createAdmin = async () => {
     await prisma.$disconnect();
   }
 };
+// c'etait juste pr le test
+//  await checkAdmin(); // Vérifie si l'admin a bien été créé
 
 const checkAdmin =  async () => {
   try {

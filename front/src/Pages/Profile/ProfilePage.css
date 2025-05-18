@@ -42,7 +42,7 @@
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid  #66c1c3;
+    border: 2px solid  #60A5FA;
 }
 
 .pp-actions {
@@ -53,7 +53,7 @@
 }
 
 .pp-button {
-    background-color: #f8d149;
+    background-color: #60A5FA;
     color: white;
     padding: 10px 18px;
     border: none;
@@ -64,11 +64,11 @@
 }
 
 .pp-button:hover {
-    background-color: #55a9ab;
+    background-color: #2980b9;
 }
 
 .pp-button.logout {
-    background-color: #e74c3c;
+    background-color: #ff4d4f;
 }
 
 .pp-button.logout:hover {
@@ -111,7 +111,7 @@
 }
 
 .pp-chatButton {
-    background-color: #f8d149;
+    background-color: #60A5FA;
     color: white;
     padding: 8px 14px;
     border: none;
@@ -153,6 +153,7 @@
     border-radius: 6px;
     cursor: pointer;
     margin-top: 10px;
+    margin-right: 20px;
 }
 
 .pp-deleteButton:hover {
@@ -163,4 +164,124 @@
     color: #777;
     font-style: italic;
     padding: 10px;
+}
+
+/* Style pour le bouton de réservation avec aucune place disponible */
+.pp-reservationButton.no-seats {
+  background-color: red;
+  color: white;
+  cursor: not-allowed; /* Empêche le clic */
+}
+
+.pp-reservationButton {
+  padding: 10px;
+  border: none;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+
+.pp-reservationButton:disabled {
+  background-color: gray;
+}
+/* Style pour les trajets complets (0 places disponibles) */
+.pp-trajetItem.full {
+    background-color: #f7695f;
+    color: white;
+}
+
+.pp-trajetItem {
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pp-trajetIcon {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+/* Changer l'icône en rouge lorsque le trajet est complet */
+.pp-icon.full-icon {
+    color: white;
+    background-color:  #f7695f;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.pp-reservationButton {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #60A5FA;
+    color: white;
+    cursor: pointer;
+}
+
+.pp-reservationButton:disabled {
+    background-color: gray;
+}
+
+.pp-reservationButton.no-seats {
+    background-color:  #f7695f;
+    color: white;
+    cursor: not-allowed;
+}
+
+.pp-deleteButton {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.pp-deleteButton:hover {
+    background-color: #d32f2f;
+}
+
+.pp-reviewSection {
+    margin-top: 40px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.pp-stars {
+    margin-bottom: 10px;
+}
+
+.pp-star {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.pp-star.selected {
+    color: gold;
+}
+
+.pp-reviewForm textarea {
+    width: 97%;
+    resize: none;
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.pp-reviewForm button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #60A5FA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

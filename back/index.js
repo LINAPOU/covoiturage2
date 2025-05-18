@@ -6,17 +6,34 @@ import trajetRoute from "./routes/trajet.route.js";
 import adminRoutes from "./routes/user.route.js";
 import contactRoutes from "./routes/contact.route.js";
 import chatRoutes from "./routes/chat.route.js";
-import driverRoutes from "./routes/driver.route.js"; // Import corrigé
+import driverRoutes from "./routes/driver.route.js";
+import notifRoutes from "./routes/notif.route.js"; // Importer le fichier de routes de notification
+import reviewRoutes from "./routes/review.route.js"; // Importer le fichier de routes de review
 import cookieParser from "cookie-parser"; 
 import mongoose from "mongoose";
 import cors from "cors";
 import { Server } from "socket.io"; // Import de socket.io
 
 dotenv.config(); 
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express(); 
 
+
+// Middleware pour gérer les fichiers multipart/form-data (pour les uploads) EN front c grace a ça que je vais generer la route de l'upload
+// Définir __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+//  Servir les fichiers statiques dans /uploads
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+
+
+
+
 // Configurer le CORS pour autoriser la communication entre le frontend et le backend
+//cors permet de gérer les requêtes cross-origin entre le frontend et le backend
 app.use(cors({ 
   origin: "http://localhost:3000",  // Adresse du frontend
   credentials: true,
@@ -31,7 +48,7 @@ const server = app.listen(process.env.PORT || 5000, () => {
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000", // Ton frontend React
+    origin: "http://localhost:3000", // le frontend React
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   },
@@ -49,6 +66,9 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/driver", driverRoutes);
+app.use("/api/review", reviewRoutes);
+app.use("/api/notifications", notifRoutes);
+
 
 // Route test
 app.get("/", (req, res) => {
@@ -76,6 +96,16 @@ const addUser = (userId, socketId) => {
   }
 };
 
+
+
+
+
+
+
+
+
+
+
 // Fonction pour retirer un utilisateur déconnecté
 const removeUser = (socketId) => {
   onlineUser = onlineUser
@@ -86,6 +116,10 @@ const removeUser = (socketId) => {
     })
     .filter((user) => user.socketIds.length > 0); // Supprimer l'utilisateur s'il n'a plus de socketId
 };
+
+
+
+
 
 // Fonction pour obtenir un utilisateur par son ID
 const getUser = (userId) => {

@@ -1,23 +1,95 @@
-.h-wrapper{
-    background: linear-gradient(to right, #66c1c3, #e0eee9);}
-.h-container{
-    padding: 1rem ;
-    justify-content:space-between;
-   
-}
-.h-menu{
-gap: 2em;
-}
-.h-menu a{
- color: white;
- text-decoration: none;
- font-weight: bolder;
+.h-wrapper {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.h-menu:hover{
+.h-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h-logo {
+    width: 100px;
+    border-radius: 8px;
+}
+
+/* Default menu (desktop) */
+.h-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.h-menu a {
+    color: #60A5FA;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.h-menu a:hover {
+    transform: scale(1.1);
+    
+
+}
+
+.buttonhomepage {
+    background-color: #6EE7B7;
+        color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buttonhomepage:hover {
+    background-color: #6EE7B7;
+        color: white;    transform: scale(1.05);
+}
+
+/* Hamburger icon - hidden on desktop */
+.h-burger {
+    display: none;
+    font-size: 2rem;
     cursor: pointer;
 }
-.h-menu a:hover{
-transform: scale(1.1);
-text-decoration: underline;
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .h-burger {
+        display: block;
+    }
+
+    .h-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color:#F9FAFB;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+         }
+         .h-menu a{
+        color:#60A5FA;        ;
+         }
+
+    .h-menu.open {
+        display: flex;
+        transform: translateZ(0);
+            /* active l'accélération matérielle */
+            border-radius: 8px;
+            transform: translateY(10px);
+            transition: all 0.1s ease-in-out;
+        }
 }

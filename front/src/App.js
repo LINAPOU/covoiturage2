@@ -12,6 +12,11 @@ import Listetrajets from './Pages/Listetrajets/Listetrajets';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Srvclient from './Pages/Srvclient/Srvclient';
 import Chat from './Pages/Chat/Chat';
+import Review from "./Pages/Review/Review";
+import Stats from "./Pages/Stats/stats";
+import Nvlannonce from "./Pages/Nvlannonce/Nvlannonce";
+import Howto from "./Pages/Howto/Howto";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -34,7 +39,10 @@ function App() {
       <Route path="/Dashboard" element={<Dashboard />} /> 
        <Route path="/Srvclient" element={<Srvclient />} /> 
        <Route path="/Chat/:id" element={<Chat />} /> 
-
+        <Route path="/stats" element={<Stats />} />
+<Route path="/review" element={<Review />} />
+ <Route path="/nvlannonce" element={<Nvlannonce />} />
+ <Route path="/Howto" element={<Howto/>} />
 
 
 

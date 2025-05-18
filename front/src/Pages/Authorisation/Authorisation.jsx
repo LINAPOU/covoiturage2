@@ -1,30 +1,28 @@
 import React, { useState } from "react";
-import AxiosApi from "../../Lib/AxiosApi"; // Ton API pour l'envoi des documents
+import AxiosApi from "../../Lib/AxiosApi";
 import "./Authorisation.css";
-import { FaCar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Authorisation() {
-  const [identityCard, setIdentityCard] = useState(null); // Carte d'identité
-  const [carRegistration, setCarRegistration] = useState(null); // Carte grise
-  const [vehicleCard, setVehicleCard] = useState(null); // Carte de véhicule
+  const [identityCard, setIdentityCard] = useState(null);
+  const [carRegistration, setCarRegistration] = useState(null);
+  const [vehicleCard, setVehicleCard] = useState(null);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleFileChange = (e, setFile) => {
     const file = e.target.files[0];
-    if (file) {
-      setFile(file);
-    }
+    if (file) setFile(file);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
     setError("");
+    setIsLoading(true);
 
     if (!identityCard || !carRegistration || !vehicleCard) {
-      setError("Tous les documents sont requis");
+      setError("Tous les documents sont requis.");
       setIsLoading(false);
       return;
     }
@@ -35,12 +33,11 @@ function Authorisation() {
     formData.append("vehicleCard", vehicleCard);
 
     try {
-      const response = await AxiosApi.post("/driver/upload-documents", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      await AxiosApi.post("/driver/upload-documents", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
-      alert("Documents envoyés avec succès.");
+      alert("Documents envoyés avec succès !");
+      navigate("/profile"); // redirection possible
     } catch (err) {
       setError("Erreur lors de l'envoi des documents.");
     } finally {
@@ -48,65 +45,64 @@ function Authorisation() {
     }
   };
 
-    return (
-      <div
-        style={{
-          background: "linear-gradient(to right, #66c1c3, #e0eee9)",
-        }}
-      >
-        <div className="uploadDocumentsPage">
-          <FaCar size={50} />
-          <h1>
-            <span>Chauffeurs! </span> Veuillez Soumettre vos Documents{" "}
-            <span>minimum 24H</span> avant le départ
-          </h1>
-          <p>
-            L'équipe <span>CevRoute</span> fait de son mieux pour maintenir
-            votre sécurité
-          </p>
-          <form onSubmit={handleSubmit} encType="multipart/form-data">
-            <div className="uploadfile-input">
-              <label htmlFor="identityCard">Carte d'identité :</label>
-              <input
-                type="file"
-                id="identityCard"
-                accept=".jpg, .jpeg, .png, .pdf"
-                onChange={(e) => handleFileChange(e, setIdentityCard)}
-              />
-            </div>
-            <div className="uploadfile-input">
-              <label htmlFor="carRegistration">Carte Grise :</label>
-              <input
-                type="file"
-                id="carRegistration"
-                accept=".jpg, .jpeg, .png, .pdf"
-                onChange={(e) => handleFileChange(e, setCarRegistration)}
-              />
-            </div>
-            <div className="uploadfile-input">
-              <label htmlFor="vehicleCard">Carte de Véhicule :</label>
-              <input
-                type="file"
-                id="vehicleCard"
-                accept=".jpg, .jpeg, .png, .pdf"
-                onChange={(e) => handleFileChange(e, setVehicleCard)}
-              />
-            </div>
-            {error && <span className="error-message">{error}</span>}
-            <Link to="/add">
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="uploadbutton"
-              >
-                Envoyer votre demande ici
-              </button>
-            </Link>
-            
-          </form>
-        </div>
+  return (
+    <div className="driver-upload-page">
+      <div className="upload-card">
+        <h1>Soumettre vos documents</h1>
+        <p>Pour devenir conducteur, veuillez envoyer vos documents requis.</p>
+
+        <form onSubmit={handleSubmit}>
+          <div className="upload-form-group">
+            <label htmlFor="identityCard">Carte d'identité</label>
+            <input
+              type="file"
+              id="identityCard"
+              accept=".jpg, .jpeg, .png, .pdf"
+              onChange={(e) => handleFileChange(e, setIdentityCard)}
+            />
+          </div>
+
+          <div className="upload-form-group">
+            <label htmlFor="carRegistration">Carte grise</label>
+            <input
+              type="file"
+              id="carRegistration"
+              accept=".jpg, .jpeg, .png, .pdf"
+              onChange={(e) => handleFileChange(e, setCarRegistration)}
+            />
+          </div>
+
+          <div className="upload-form-group">
+            <label htmlFor="vehicleCard">Permis de Conduire</label>
+            <input
+              type="file"
+              id="vehicleCard"
+              accept=".jpg, .jpeg, .png, .pdf"
+              onChange={(e) => handleFileChange(e, setVehicleCard)}
+            />
+          </div>
+
+          {error && <div className="error-text">{error}</div>}
+
+          <button type="submit" className="submit-btn" disabled={isLoading}>
+            {isLoading ? "Envoi en cours..." : "Envoyer"}
+          </button>
+        </form>
       </div>
-    );
+
+      <div className="driver-obligations">
+        <h2>Réglementation du conducteur</h2>
+        <ul>
+          <li>Avoir des documents valides</li>
+          <li>Avoir un véhicule en bon état</li>
+          <li>Respecter les horaires indiqués</li>
+          <li>Assurer la sécurité des passagers</li>
+          <li>Être ponctuel et courtois</li>
+
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 export default Authorisation;

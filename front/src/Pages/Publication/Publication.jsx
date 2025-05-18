@@ -2,30 +2,31 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import Map from "../../Componenents/Map/Map.jsx";
-import './Publication.css'
+import "./Publication.css";
 import DOMPurify from "dompurify";
 import AxiosApi from "../../Lib/AxiosApi";
-function Publication({ item }) {
-
+import { Link } from "react-router-dom";
+function Publication() {
   const { id } = useParams(); // Récupérer l'ID du trajet depuis l'URL
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const [trajet, setTrajet] = useState(null);
   const [loading, setLoading] = useState(true);
-    const handleContact = async () => {
-     
-      try {
-        const res = await AxiosApi.post("/chat/initiate/" + item.userId); // ID du conducteur
-        navigate("/chat/" + res.data.id); // Redirige vers le chat nouvellement créé ou existant
-      } catch (err) {
-        console.error("Erreur lors de la création du chat :", err);
-        alert("Erreur lors du contact. Veuillez réessayer.");
-      }
-    };
+  const [trajetCoords, setTrajetCoords] = useState(null);
 
-   
+  const handleContact = async () => {
+    try {
+      const res = await AxiosApi.post("/chat/initiate/" + trajet.userId); // ID du conducteur
+      navigate("/chat/" + res.data.id); // Redirige vers le chat
+    } catch (err) {
+      console.error("Erreur lors de la création du chat :", err);
+      alert("Erreur lors du contact. Veuillez réessayer.");
+    }
+  };
+
   useEffect(() => {
-    fetch(`http://localhost:5000/api/trajet/${id}`) // Remplace avec ton URL backend
+    fetch(`http://localhost:5000/api/trajet/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTrajet(data);
@@ -37,7 +38,7 @@ function Publication({ item }) {
       });
   }, [id]);
 
-  // Fonction pour obtenir les coordonnées GPS des adresses
+  // Fonction pour obtenir les coordonnées GPS
   const getCoordinates = async (address) => {
     if (!address) return null;
     try {
@@ -47,7 +48,6 @@ function Publication({ item }) {
         )}`
       );
       const data = await response.json();
-
       if (data.length > 0) {
         return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
       } else {
@@ -55,16 +55,10 @@ function Publication({ item }) {
         return null;
       }
     } catch (error) {
-      console.error(
-        `Erreur lors de la récupération des coordonnées pour ${address}`,
-        error
-      );
+      console.error("Erreur coordonnées :", error);
       return null;
     }
   };
-
-  // Charger les coordonnées uniquement si le trajet est disponible
-  const [trajetCoords, setTrajetCoords] = useState(null);
 
   useEffect(() => {
     if (trajet) {
@@ -80,7 +74,7 @@ function Publication({ item }) {
   if (loading) return <p>Chargement...</p>;
   if (!trajet) return <p>Trajet introuvable.</p>;
 
-  
+  const detail = trajet.trajetDetail || {}; // Sécurité
 
   return (
     <div className="trajetPage">
@@ -91,8 +85,8 @@ function Publication({ item }) {
               <div className="trajet">
                 <h1>{trajet.title}</h1>
                 <div className="user">
-                  <img src={trajet.user.avatar} alt="" />
-                  <span>{trajet.user.username}</span>
+                  <img src={trajet.user?.avatar} alt="avatar" />
+                  <span>{trajet.user?.username}</span>
                 </div>
                 <div className="locations">
                   <p>
@@ -101,66 +95,90 @@ function Publication({ item }) {
                   </p>
                   <p>Arrivée : {trajet.arrivalLocation}</p>
                 </div>
-                <div className="price">Prix : {trajet.price}€</div>
+                <div className="price">Prix : {trajet.price}DA</div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div className="features">
         <div className="wrapper">
           <p className="title">Caractéristiques du trajet</p>
+
           <div className="listVertical">
             <div className="feature">
+              <span>Description :</span>
               <div
                 className="bottom"
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(
-                    trajet?.trajetDetail?.description ||
+                    detail.description ||
                       "<p>Aucune description disponible.</p>"
                   ),
                 }}
-              ></div>
+              />
             </div>
 
             <div className="feature">
               <span>Animaux :</span>
-              <p>{trajet.pet === "true" ? "Autorisé" : "Non autorisé"}</p>
+              <p>
+                {detail.pet === true
+                  ? "Animaux permis"
+                  : detail.pet === false
+                  ? "Animaux non permis"
+                  : "Non précisé"}
+              </p>
             </div>
+
             <div className="feature">
               <span>Fumeur :</span>
-              <p>{trajet.smoker === "true" ? "Oui" : "Non"}</p>
+              <p>{detail.smoker === "true" ? "Oui" : "Non"}</p>
             </div>
             <div className="feature">
               <span>Musique :</span>
-              <p>{trajet.music === "true" ? "Oui" : "Non"}</p>
+              <p>{detail.music === "true" ? "Oui" : "Non"}</p>
             </div>
             <div className="feature">
               <span>Climatisation :</span>
-              <p>{trajet.ac === "true" ? "Disponible" : "Non disponible"}</p>
+              <p>{detail.ac === "true" ? "Disponible" : "Non disponible"}</p>
             </div>
+
             <div className="feature">
               <span>Bagages :</span>
-              <p>{trajet.luggage || "Non précisée"}</p>
+              <p>{detail.luggage || "Non précisé"}</p>
             </div>
             <div className="feature">
               <span>Discussion :</span>
-              <p>{trajet.discussion || "Non précisée"}</p>
+              <p>{detail.discussion || "Non précisé"}</p>
+            </div>
+            <div className="feature">
+              <div className="imagesContainer">
+                {Array.isArray(trajet.images) &&
+                  trajet.images.map((imageUrl, index) => (
+                    <img
+                      key={index}
+                      src={imageUrl}
+                      alt={`trajet-${index}`}
+                      style={{
+                        width: "200px",
+                        marginRight: "10px",
+                        borderRadius: "10px",
+                      }}
+                    />
+                  ))}
+              </div>
             </div>
           </div>
-          <p className="title">Localisation</p>
-          <div className="mapContainer">
-            {trajetCoords ? (
-              <Map items={[{ ...trajet, ...trajetCoords }]} />
-            ) : (
-              <p>Chargement de la carte...</p>
-            )}
-          </div>
-          <div className="buttons">
-            <button onClick={handleContact} className="trajet-card-icon">
-              Contacter le conducteur
-            </button>
-          </div>
+        </div>
+
+        <p className="title">Localisation</p>
+        <div className="mapContainer">
+          {trajetCoords ? (
+            <Map items={[{ ...trajet, ...trajetCoords }]} />
+          ) : (
+            <p>Chargement de la carte...</p>
+          )}
         </div>
       </div>
     </div>

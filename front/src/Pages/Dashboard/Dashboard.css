@@ -1,103 +1,242 @@
-/* 🔥 Dashboard Styles */
 
 /* Conteneur principal */
 .dashboard-container {
-    padding: 30px;
-    background-color: #f7f7f7;
+    padding: 40px;
+    background-color: #eef2f5;
     min-height: 100vh;
-    font-family: 'Arial', sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Titre du Dashboard */
+/* Titre principal */
 .dashboard-title {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #333;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1e2a38;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 /* Message d'erreur */
 .dashboard-error {
-    color: #e74c3c;
+    background-color: #ffe6e6;
+    color: #b00020;
+    border: 1px solid #f5c2c7;
+    padding: 12px 20px;
+    border-radius: 6px;
     margin-bottom: 20px;
     font-size: 1rem;
-    padding: 10px;
-    background-color: #fdecea;
-    border: 1px solid #e74c3c;
-    border-radius: 6px;
 }
 
-/* Conteneur du tableau */
+/* Tableau */
 .dashboard-table-container {
     overflow-x: auto;
-    margin-bottom: 20px;
 }
 
-/* Style du tableau */
 .dashboard-table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    background-color: #ffffff;
+    border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-/* En-têtes du tableau */
 .dashboard-table thead {
     background-color: #f8d149;
-    color: white;
+    color: #ffffff;
+    font-weight: 600;
 }
 
-.dashboard-table th,
+.dashboard-table th{
+     padding: 14px 18px;
+}
 .dashboard-table td {
-    padding: 12px;
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid ;
+    color: #1e2a38;
+}
+
+.dashboard-table td:hover {
+    background-color: #f5faff;
+}
+
+/* Bouton Supprimer */
+.delete-btn {
+    background-color: #d32f2f;
+    color: #ffffff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #b71c1c;
+}
+
+/* Liens */
+.dashboard-links {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.dashboard-link {
+    font-size: 1.2rem;
+    color: #f8d149;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.dashboard-link:hover {
+    text-decoration: underline;
+    color: #004999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 20px;
+    }
+
+    .dashboard-title {
+        font-size: 1.8rem;
+    }
+
+    .dashboard-table th,
+    .dashboard-table td {
+        padding: 10px;
+    }
+
+    .delete-btn {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+}
+/* 🧾 Validation des conducteurs */
+
+/* Sous-titre */
+.dashboard-container h2 {
+    font-size: 1.6rem;
+    color: #2c3e50;
+    margin: 30px 0 15px;
     text-align: left;
 }
 
-/* Ligne de suppression (Bouton) */
-.delete-btn {
-    background-color: #e74c3c;
+/* Liste des conducteurs en attente */
+.pending-drivers-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Élément de conducteur */
+.pending-driver-item {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #1e2a38;
+}
+
+/* Liens vers les documents */
+.documents-preview a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.documents-preview a:hover {
+    text-decoration: underline;
+    color: #004080;
+}
+
+/* Bouton de validation */
+.pending-driver-item button {
+    align-self: flex-start;
+    background-color: #f8d149;
     color: white;
     font-weight: bold;
-    padding: 8px 16px;
+    padding: 8px 14px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.delete-btn:hover {
-    background-color: #c0392b;
+.pending-driver-item button:hover {
+    background-color: #66c1c3;
+    
 }
 
-/* Liens */
-.dashboard-links {
-    margin-top: 20px;
+
+
+
+/* 📁 Layout global */
+.dashboard-layout {
+    background: linear-gradient(to right, #66c1c3, #e0eee9);
+    display: flex;
+    min-height: 100vh;
+        display: flex;;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* 🧭 Sidebar améliorée */
+.sidebar {
+    width: 250px;
+    background:#66c1c3;
+    display: flex;    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
 }
 
-.dashboard-link {
-    font-size: 1rem;
+.sidebar h1 {
     color: #f8d149;
-    text-decoration: none;
+    font-size: 2.5rem;
     font-weight: bold;
-}
+    margin: 20px;
+    padding-left: 1.3rem;
 
-.dashboard-link:hover {
-    text-decoration: underline;
-}
-
-/* 🎯 Responsive Styles */
-@media (max-width: 768px) {
-    .dashboard-container {
-        padding: 20px;
     }
 
-    .dashboard-table {
-        font-size: 0.9rem;
-    }
-
-    .delete-btn {
-        font-size: 0.85rem;
-    }
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
 }
+
+.sidebar a {
+    color: #e0e0e0;
+    text-decoration: none;
+    padding: 12px 20px;
+    padding-right: 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar a:hover {
+    background-color:#e0e0e0;
+    color: #f8d149;
+}
+
+/* 🧾 Contenu principal */
+.dashboard-content {
+    flex-grow: 1;
+    padding: 30px;
+    background: linear-gradient(to right, #66c1c3, #e0eee9);}
+
+
+    

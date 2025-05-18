@@ -11,12 +11,14 @@ function Commencer() {
           <br />
           <span className="second-text">Inscrivez vous sur CEVROUTE</span>
           <br />
+
           <span className="second-text">
             Rouler ensemble,c’est rouler plus malin… et plus fun !
           </span>
-
           <div>
-            <Link to="./login" className="main-button ">
+            <br />
+
+            <Link to="./login" className="com-button ">
               Commencer
             </Link>
           </div>

@@ -31,23 +31,7 @@ export const updateUser = async (req, res) => {
   const tokenUserId = req.userId;
   const { password, avatar, ...inputs } = req.body;
 
-const idFromParams = new ObjectId(id);  // Conversion de l'ID de l'URL en ObjectId
-
-
-const objectIdFromToken = new ObjectId(tokenUserId);
-
-
-
-    
-    
-
-    
-    
-    
-    
-    
-    
-  let updatedPassword = null;
+let updatedPassword = null;
   try {
     if (password) {
       updatedPassword = await bcrypt.hash(password, 10);

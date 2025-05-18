@@ -2,20 +2,22 @@
 .logSignBackground {
     margin: 0px;
     padding: 0px;
-    background-image: url('/public/Driving.gif');
+    background-image: url('/public/login3.jpg');
     background-size:cover;
     background-position: center center;
     background-attachment: fixed;
     background-repeat:no-repeat;
     height: 100vh;
-
+    overflow: hidden;
+    
 }
 
 .loginPage {
+    margin-left: 250px;
     padding: 20px;
     display: flex;
     height:  510px;
-    overflow: hidden;
+    width: 100%;
     border-radius: 20px;
 
    
@@ -30,12 +32,12 @@
     width: 50%;
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(1, 1, 1, 1);
-              background-color: transparent;
+              background-color: white;
 }
 
 .loginFormTitle {
     font-size: 2rem;
-    color: #66c1c3;
+    color: #6EE7B7;
     animation:alternate;
     text-align: center;
     font-weight: 600;
@@ -45,7 +47,7 @@
 .loginInput {
     width: 100%;
     padding: 12px 15px;
-    margin: 12px 0;
+    margin: 12px -10px;
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 1rem;
@@ -59,23 +61,25 @@
     background-color: #f0faff;
 }
 
-/* Button styles */
 .loginButton {
     width: 100%;
-        padding: 12px;
+     padding: 12px;
     margin-top: 20px;
-    background:#f8d149;   
+    margin-left: 10px;
     border: none;
     color: #fff;
     font-size: 1.1rem;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
+    background-color: #6EE7B7;
 }
 
 
 .loginButton:hover {
-    background-color: transparent;
+    background: transparent;
+    color: #6EE7B7;
+    border: 2px solid #6EE7B7;
 }
 
 /* Error message styling */
@@ -86,13 +90,13 @@
     text-align: center;
 }
 
-/* Signup link styling */
 .signupLink {
     display: block;
     margin-top: 10px;
     color: #007BFF;
     text-align: center;
     font-size: 0.9rem;
+    width: 100%;
     text-decoration: none;
 }
 

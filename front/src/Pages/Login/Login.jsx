@@ -25,7 +25,8 @@ function Login() {
         email,
         password,
       });
-
+    
+          localStorage.setItem("token", res.data.token); // 🔹 Stocke le token dans le localStorage
 
       updateUser(res.data);
          if (res.data.role === "ADMIN") {
@@ -48,7 +49,7 @@ function Login() {
        <div className="loginPage">
          <div className="loginFormContainer">
            <form onSubmit={handleSubmit}>
-             <h1 className="loginFormTitle">Welcome back</h1>
+             <h1 className="loginFormTitle">Se Connecter !</h1>
              <input
                className="loginInput"
                name="email"
@@ -63,14 +64,14 @@ function Login() {
                name="password"
                type="password"
                required
-               placeholder="Password"
+               placeholder="Mot de passe"
              />
              <button className="loginButton" disabled={isLoading}>
-               Login
+               Connexion
              </button>
              {error && <span className="errorMessage">{error}</span>}
              <Link to="/Signup" className="signupLink">
-               You have an account?
+               Vous n'avez pas de compte ?
              </Link>
            </form>
          </div>

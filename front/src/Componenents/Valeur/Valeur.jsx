@@ -27,22 +27,13 @@ function Valeur() {
       <div className="padding innerwidth flexcenter v-container">
         {/* left side */}
         <div className="v-left  val-image">
-          <img src="./COVOITURAGE3.jpg" alt="Valeurs" />
+          <img src="./cycle.gif" alt="Valeurs" />
         </div>
 
         {/* right side */}
         <div className="flexcolstart v-right">
           <span
-            style={{
-              color: "#f8d149",
-              fontSize: "larger",
-              fontWeight: "bolder",
-            }}
-          >
-            Nos Valeurs Et Aspirations
-          </span>
-          <span
-            style={{ fontSize: "45px", fontWeight: "bolder", color: "#192c4a" }}
+            style={{ fontSize: "45px", fontWeight: "bolder", color: "#6EE7B7" }}
           >
             Ce que nous souhaitons vous transmettre
           </span>
@@ -83,9 +74,6 @@ function Valeur() {
           </Accordion>
         </div>
       </div>
-      <footer className="footer">
-        <p>© 2025 Covoiturage CEVROUTE - Tous droits réservés</p>
-      </footer>
     </section>
   );
 }

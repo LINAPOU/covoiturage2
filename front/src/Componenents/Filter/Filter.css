@@ -1,120 +1,50 @@
-/* 🔥 Conteneur principal du filtre */
+/* Conteneur principal du filtre */
 .lft-filter-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px 25px;
-    background-color: #fff;
+    position: sticky;
+    top: 0;
+    background:  #0BABD1;    padding: 20px 40px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 0 auto 20px;
     border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    margin: auto;
-    border: 1px solid #ddd;
-}
-
-/* 🔥 Titre du filtre */
-.lft-heading {
-    font-size: 1.3rem;
-    color: #4e9fa6;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-/* 🔥 Conteneur des champs de filtre en ligne */
-.lft-filter-fields {
-    display: flex;
-    flex-direction: row;
-}
-
-/* 🔥 Style des éléments du filtre (champs de saisie) */
-.lft-item {
     display: flex;
     flex-direction: column;
+    height: 300px;
+    z-index: 10;
 }
 
-.lft-item label {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 5px;
-    font-weight: 500;
+/* Titre du filtre */
+.lft-filter-container h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-.lft-input {
-    padding: 8px;
-    font-size: 0.9rem;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    margin-top: 5px;
-    transition: border-color 0.2s ease;
-}
-
-.lft-input:focus {
+/* Style pour chaque champ de saisie */
+.lft-filter-container input {
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 15px;
+    box-sizing: border-box;
     outline: none;
-    border-color: #4e9fa6;
+    transition: border-color 0.3s ease;
 }
 
-/* 🔥 Style des cases à cocher (alignées horizontalement) */
-.lft-checkbox-group {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    width: 100%;
-    font-size: 0.9rem;
-    color: #666;
+/* Changer la couleur de la bordure quand le champ est actif */
+.lft-filter-container input:focus {
+    border-color: black;
 }
 
-.lft-checkbox-group label {
-    display: flex;
-    align-items: center;
-}
-
-.lft-checkbox-group input {
-    margin-right: 8px;
-}
-
-/* 🔥 Bouton de recherche */
-.lft-button {
-    background-color: #4e9fa6;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    width: 100%;
-    margin-top: 20px;
-    transition: background-color 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lft-button:hover {
-    background-color: #3c8683;
-}
-
-/* 🔥 Icône dans le bouton */
-.lft-icon {
-    width: 16px;
-    height: 16px;
-    margin-left: 8px;
-}
-
-/* 🔥 Responsive Design */
-@media (max-width: 768px) {
+/* Réduire les marges pour les petits écrans */
+@media (max-width: 600px) {
     .lft-filter-container {
-        padding: 15px;
-    }
-
-    .lft-filter-fields {
-        flex-direction: column;
-    }
-
-    .lft-checkbox-group {
-        flex-direction: column;
-    }
-
-    .lft-button {
-        width: auto;
+        padding: 15px 20px;
+        max-width: 100%;
     }
 }

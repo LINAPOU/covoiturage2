@@ -26,17 +26,18 @@ const handleSubmit = async (e) => {
     setError("Token is missing. Please log in.");
     return;
     }
-    if (!currentUser.id) {
-      setError("User ID is missing. Please log in.");
+if (!currentUser || !currentUser._id) {
+      setError("User not found. Please log in.");
       return;
     }
+
 
 
    
 
     try {
-const res = await AxiosApi.put(
-  `/users/${currentUser.id}`,
+const res = await AxiosApi.post(
+  `/users/update/${currentUser._id}`,
   {
     username,
     email,
@@ -95,17 +96,14 @@ const res = await AxiosApi.put(
           alt="Avatar"
           className="avatar"
         />
-        <Cloudinary
-         
+         <Cloudinary
           uwConfig={{
-            cloudName: "lamadev",
-            uploadPreset: "estate",
-            multiple: false,
-            maxImageFileSize: 2000000,
-            folder: "avatars",
-            
+            multiple: true,
+            cloudName: "dxksn2jnl",
+            uploadPreset: "covoituragelina",
+            multiple: true,
           }}
-          setState={setAvatar} // Update avatar state
+          setState={setAvatar}
         />
       </div>
     </div>

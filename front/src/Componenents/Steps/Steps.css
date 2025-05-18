@@ -1,0 +1,58 @@
+.comment-page {
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #6EE7B7
+     ;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.step-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    color: gray;
+}
+
+.step-card:hover {
+    transform: translateX(-5px);
+}
+
+.step-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.step-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: gray    ;
+}
+
+.step-description {
+    font-size: 1rem;
+    color: gray    ;}
+
+@media (max-width: 768px) {
+
+    .step-card{
+        width: 300px;
+    }
+}

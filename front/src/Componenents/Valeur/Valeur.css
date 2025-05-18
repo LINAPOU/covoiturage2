@@ -33,9 +33,10 @@ box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
         
 }
 .val-image>img{
-        border: 8px solid #f8d149;
+        border: 8px solid #6EE7B7;
         border-radius: 10px;
-        filter: drop-shadow(3px 3px 0px #c16068) drop-shadow(-3px -3px 0px #488793);
+        filter: drop-shadow(3px 3px 0px #6EE7B7) 
+        drop-shadow(-3px -3px 0px #60A5FA);
     width: 30rem;
     height: 35rem;
     padding: 10px;
@@ -62,5 +63,37 @@ box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
     /* Colle à droite */
 }
 .icon svg{
-    fill: #5fc1c6;
+    fill: #10B981;
+}@media (max-width: 768px) {
+    .v-container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center; 
+            width: 80%;
+            padding: 0px;
+     }
+
+    .v-left{
+        display: none;
+    }
+    .v-right {
+        width: 100%;
+    }
+
+    .v-right>span:first-child {
+        font-size: 1.6rem;
+    }
+
+    .accordionButtom {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .secondaryText {
+        font-size: 0.95rem;
+    }
+
+    .icon {
+        margin: 0 0.5rem;
+    }
 }

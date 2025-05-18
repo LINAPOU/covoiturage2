@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AxiosApi from "../../Lib/AxiosApi.js";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext.js";
 import "../Login/Login.css";
 
 function SignUp() {
@@ -9,6 +11,8 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const { updateUser } = useContext(AuthContext); // Accède à updateUser depuis AuthContext
 
   const navigate = useNavigate();
 
@@ -26,7 +30,15 @@ function SignUp() {
 
       if (res && res.data) {
         console.log("Inscription réussie :", res.data);
-        navigate("/profile"); // Rediriger vers la page de connexion après l'inscription
+
+        // Stocke le token dans localStorage
+        localStorage.setItem("token", res.data.token);
+
+        // Mets à jour le contexte avec les informations de l'utilisateur
+        updateUser(res.data);
+
+        // Redirige vers la page du profil après inscription
+        navigate("/profile");
       } else {
         console.error("Réponse inattendue :", res);
         setError("Une erreur s'est produite lors de l'inscription.");
@@ -44,7 +56,7 @@ function SignUp() {
       <div className="loginPage">
         <div className="loginFormContainer">
           <form onSubmit={handleSubmit}>
-            <h1 className="loginFormTitle">Create an Account</h1>
+            <h1 className="loginFormTitle">Créer un compte</h1>
             <input
               className="loginInput"
               name="username"

@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div className="about-container">
       <section className="hero">
-        <h1 className="hero-title">Bienvenue sur Covoiturage Cevroute</h1>
+        <h1 className="hero-title">Bienvenue sur Covoiturage ZeRoad</h1>
         <p className="hero-subtitle">
           Le covoiturage simplifié, écologique et économique.
         </p>
@@ -16,9 +16,9 @@ const About = () => {
       <section className="mission">
         <h2>Notre Mission</h2>
         <p>
-          Chez <strong>Covoiturage Cevroute</strong>, nous visons à rendre les
+          Chez <strong>Covoiturage ZeRoad</strong>, nous visons à rendre les
           trajets plus durables, moins coûteux et plus conviviaux
-          <strong> Pour Nos Employés </strong> . Nous croyons en un futur où
+          <strong> Pour Nos Vous </strong> . Nous croyons en un futur où
           chaque voyage en voiture réduit le nombre de véhicules sur les routes,
           contribue à une meilleure qualité de l'air et permet à tous de voyager
           plus facilement et moins cher.
@@ -72,7 +72,7 @@ const About = () => {
       </section>
 
       <footer className="footer">
-        <p>© 2025 Covoiturage CEVROUTE - Tous droits réservés</p>
+        <p>© 2025 Covoiturage ZeRoad - Tous droits réservés</p>
       </footer>
     </div>
   );

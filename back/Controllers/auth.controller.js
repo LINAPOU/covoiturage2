@@ -121,13 +121,5 @@ try {
 
 // Déconnexion
 export const logout = (req, res) => {
-    try {
-        res.cookie("token", "", { maxAge: 0, httpOnly: true });
-         res.status(200).json({ msg: "Déconnexion réussie" });
-    } catch (error) {
-        res.status(500).json({ msg: error.message });
-                console.log(error.message);
-
-    }
+  res.clearCookie("token").status(200).json({ message: "Logout Successful" });
 };
-

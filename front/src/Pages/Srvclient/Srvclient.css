@@ -1,54 +1,94 @@
-/* 🔥 Srvclient Styles */
+/* 🎯 Police moderne */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* Conteneur principal */
-.srvclient-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-/* Titre principal */
-.srvclient-title {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Message s'il n'y a pas de messages */
-.srvclient-no-messages {
-    font-size: 1rem;
-    color: #777;
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Liste des messages */
-.srvclient-message-list {
-    list-style-type: none;
-    padding: 0;
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f6f8;
     margin: 0;
+    padding: 0;
 }
 
-/* Élément d'un message */
+/* 🌟 Conteneur général */
+.srvclient-container {
+    max-width: 960px;
+    margin: 50px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e0e0e0;
+}
+
+/* 🧠 Titre */
+.srvclient-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* 📨 Pas de message */
+.srvclient-no-messages {
+    text-align: center;
+    color: #999;
+    font-size: 1.1rem;
+    padding: 20px 0;
+}
+
+/* 📋 Liste des messages */
+.srvclient-message-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 💬 Chaque message */
 .srvclient-message-item {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    border-radius: 16px;
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
 }
 
-/* Entête du message */
-.srvclient-message-header {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 8px;
+.srvclient-message-item:hover {
+    background: #f0f4ff;
+    border-color: #c3dafe;
+    transform: scale(1.01);
 }
-.srvclient-message-header img{
- width: 90px;
+
+/* 👤 En-tête message */
+.srvclient-message-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.srvclient-message-header img {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+/* 🌘 Dark mode en bonus */
+body.dark .srvclient-container {
+    background: #1e1e1e;
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark .srvclient-message-item {
+    background: #2b2b2b;
+    border-color: #444;
+}
+
+body.dark .srvclient-message-header {
+    color: #eee;
 }

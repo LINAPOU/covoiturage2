@@ -4,9 +4,17 @@ import AxiosApi from '../Lib/AxiosApi';
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
-  );
+ const [currentUser, setCurrentUser] = useState(() => {
+  try {
+    const stored = localStorage.getItem("user");
+    if (!stored || stored === "undefined") return null;
+    return JSON.parse(stored);
+  } catch (err) {
+    console.error("Erreur de parsing du user dans localStorage :", err);
+    return null;
+  }
+});
+
 
  
 
@@ -32,8 +40,14 @@ export const AuthContextProvider = ({ children }) => {
 
 
   const updateUser = (user) => {
-    setCurrentUser(user);
-  };
+  setCurrentUser(user);
+  if (user) {
+    localStorage.setItem("user", JSON.stringify(user)); // <-- Ceci est essentiel
+  } else {
+    localStorage.removeItem("user"); // On nettoie bien lors du logout
+  }
+};
+
   return (
     <AuthContext.Provider value={{ currentUser,updateUser }}>
       {children}

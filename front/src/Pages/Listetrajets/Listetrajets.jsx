@@ -10,6 +10,12 @@ function Listetrajets() {
   const [error, setError] = useState(null);
   const [trajetResponse, setTrajetResponse] = useState({ data: [] });
 
+  // 👉 Filtres
+  const [filters, setFilters] = useState({
+    departingLocation: "",
+    arrivalLocation: "",
+  });
+
   useEffect(() => {
     fetch("http://localhost:5000/api/trajet")
       .then((res) => res.json())
@@ -23,6 +29,21 @@ function Listetrajets() {
         setLoading(false);
       });
   }, []);
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+
+  // 👉 Application des filtres localement
+ 
+  const filteredTrajets = trajets.filter(
+    (trajet) =>
+      trajet.departingLocation
+        .toLowerCase()
+        .includes(filters.departingLocation.toLowerCase()) &&
+      trajet.arrivalLocation
+        .toLowerCase()
+        .includes(filters.arrivalLocation.toLowerCase())
+  );
 
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>{error}</p>;
@@ -31,10 +52,12 @@ function Listetrajets() {
     <div className="listetrajets-container">
       <div className="listetrajets-main">
         <div className="listetrajets-wrapper">
-          <Filter />
+          <Filter filters={filters} onFilterChange={handleFilterChange} />
           <div className="listetrajets-cards">
-            {trajets.length > 0 ? (
-              trajets.map((trajet) => <Card key={trajet.id} item={trajet} />)
+            {filteredTrajets.length > 0 ? (
+              filteredTrajets.map((trajet) => (
+                <Card key={trajet.id} item={trajet} />
+              ))
             ) : (
               <p>Aucun trajet trouvé.</p>
             )}

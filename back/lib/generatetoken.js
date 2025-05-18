@@ -2,9 +2,13 @@ import jwt   from "jsonwebtoken";
 
 //pr generer un token on un besoin d'un environnement variable qui va contenir la clé secrete 
 export const generateToken = (userId, res) => {
-    const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ userId }, process.env.JWT_SECRET
+        , {
         expiresIn: "7h",
-    });
+
+});
+
+
 
     res.cookie("token", token, {
         httpOnly: true,//en gros pour empecher le javascript de lire le cookie

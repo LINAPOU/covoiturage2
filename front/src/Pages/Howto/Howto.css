@@ -1,0 +1,84 @@
+.driver {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+.driver__title {
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin-bottom: 3rem;
+}
+
+.driver__steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.driver__card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 320px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+}
+
+.driver__card:hover {
+    transform: translateY(-5px);
+}
+
+.driver__icon-wrapper {
+    margin-bottom: 1rem;
+}
+
+.driver__icon {
+    font-size: 2.5rem;
+    color: #00b894;
+}
+
+.driver__step-title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.driver__step-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.driver__cta-container {
+    margin-top: 3rem;
+}
+
+.driver__cta-button {
+    background-color: #00b894;
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.driver__cta-button:hover {
+    background-color: #019172;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .driver__steps {
+        flex-direction: column;
+        align-items: center;
+    }
+}

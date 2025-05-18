@@ -4,24 +4,27 @@ function Cloudinary({ uwConfig, setState }) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Charger le script Cloudinary si nécessaire
-    if (!loaded) {
+    if (!window.cloudinary) {
       const script = document.createElement("script");
-      script.setAttribute("async", "");
-      script.src = "https://upload-widget.cloudinary.com/global/all.js";
+      script.src = "https://widget.cloudinary.com/v2.0/global/all.js";
+      script.async = true;
       script.onload = () => setLoaded(true);
       document.body.appendChild(script);
+    } else {
+      setLoaded(true);
     }
-  }, [loaded]);
+  }, []);
 
   const initializeCloudinaryWidget = () => {
-    if (loaded) {
+    if (loaded && window.cloudinary) {
       const widget = window.cloudinary.createUploadWidget(
         uwConfig,
         (error, result) => {
           if (!error && result.event === "success") {
-            console.log("Image uploaded: ", result.info);
+            console.log("Image uploaded: ", result.info.secure_url);
             setState((prev) => [...prev, result.info.secure_url]);
+          } else if (error) {
+            console.error("Cloudinary Upload Error:", error);
           }
         }
       );
@@ -31,7 +34,7 @@ function Cloudinary({ uwConfig, setState }) {
 
   return (
     <button onClick={initializeCloudinaryWidget} disabled={!loaded}>
-      {loaded ? "Upload Image" : "Loading..."}
+      {loaded ? "Upload Image" : "Chargement..."}
     </button>
   );
 }

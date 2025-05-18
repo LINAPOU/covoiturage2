@@ -14,7 +14,8 @@ export const getPendingDrivers = async (req, res) => {
   try {
     const drivers = await prisma.user.findMany({
       where: {
-        role: "USER", 
+        role: "DRIVER", // ✅ Ils ont fait une demande
+        // ✅ Ils ne sont pas encore validés
         isDriverValidated: false,
         identityCard: { not: null },
         carRegistration: { not: null },
@@ -39,35 +40,43 @@ export const getPendingDrivers = async (req, res) => {
 
 
 
-
 export const uploadDocuments = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const tokenUserId = req.userId;
     const { identityCard, carRegistration, vehicleCard } = req.files;
 
     if (!identityCard || !carRegistration || !vehicleCard) {
       return res.status(400).json({ msg: "Tous les documents sont requis." });
     }
 
-    // Mettez ici les chemins des fichiers dans la base de données ou d'autres champs pertinents
+    console.log("Enregistrement documents :", {
+      identityCard: identityCard[0].path,
+      carRegistration: carRegistration[0].path,
+      vehicleCard: vehicleCard[0].path,
+    });
+
     const identityCardPath = identityCard[0].path;
     const carRegistrationPath = carRegistration[0].path;
     const vehicleCardPath = vehicleCard[0].path;
 
-    await prisma.user.update({
-      where: { id: userId },
+    const updatedUser = await prisma.user.update({
+      where: { id: tokenUserId },
       data: {
+        isDriverValidated: false,
+        role: "DRIVER",
         identityCard: identityCardPath,
         carRegistration: carRegistrationPath,
         vehicleCard: vehicleCardPath,
-       isDriverValidated: false,
- // En attente de validation
       },
     });
 
-    res.status(200).json({ msg: "Documents envoyés. En attente de validation." });
+    res.status(200).json({
+      msg: "Documents envoyés. En attente de validation.",
+      user: updatedUser,
+    });
   } catch (err) {
-    res.status(500).json({ msg: "Erreur serveur" });
+    console.error("Erreur uploadDocuments :", err);
+    res.status(500).json({ msg: "Erreur serveur", error: err.message });
   }
 };
 
@@ -78,7 +87,7 @@ export const validateDriver = async (req, res) => {
       where: { id: userId },
       data: {
         isDriverValidated: true,
-        role: "DRIVER", // tu peux lui donner le rôle conducteur ici
+       
       },
     });
     res.status(200).json({ msg: "Conducteur validé avec succès." });
@@ -87,3 +96,27 @@ export const validateDriver = async (req, res) => {
     res.status(500).json({ msg: "Erreur serveur lors de la validation." });
   }
 };
+
+
+export const checkvalidation = async (req, res) => {
+  const tokenUserId = req.userId; // ID de l'utilisateur actuel
+
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: tokenUserId },
+      select: {
+        isDriverValidated: true,
+        role: true,
+      },
+    });
+
+    if (!user) {
+      return res.status(404).json({ msg: "Utilisateur non trouvé." });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.error("Erreur lors de la vérification :", error);
+    res.status(500).json({ msg: "Erreur serveur lors de la vérification." });
+  }
+}

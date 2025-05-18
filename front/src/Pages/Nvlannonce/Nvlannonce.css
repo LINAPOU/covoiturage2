@@ -1,0 +1,93 @@
+.driver-hero {
+    position: relative;
+    height: 100vh;
+    background-image: url('/src/assets/home3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.contenDRIVER {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    font-weight: boldER;
+    max-width: 700px;
+    padding: 2rem;
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+}
+
+.contenDRIVER h2 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: aliceblue;
+}
+
+.contenDRIVER p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    color: aliceblue;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #00b894;
+    color: white;
+    border: none;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #019172;
+    transform: scale(1.05);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenDRIVER h2 {
+        font-size: 2.2rem;
+    }
+
+    .contenDRIVER p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}

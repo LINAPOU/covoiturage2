@@ -36,6 +36,9 @@ export const getTrajet = async (req, res) => {
             avatar: true,
           },
         },
+          trajetDetail: true, // ✅ Ajouté ici
+
+        
       },
     });
 
@@ -170,5 +173,87 @@ await prisma.trajet.delete({
     res.status(500).json({ message: "Failed to delete trajet" });
   }
 };
+// 6️⃣ Réduire une place dans un trajet
+export const reducePlaceInTrajet = async (req, res) => {
+  const id = req.params.id;
+  const tokenUserId = req.userId;
 
+  try {
+    const trajet = await prisma.trajet.findUnique({
+      where: { id },
+    });
+
+    if (!trajet) {
+      return res.status(404).json({ message: "Trajet not found" });
+    }
+
+    // Facultatif : vérifier que seul le passager ou conducteur peut déclencher cette action
+    // if (trajet.userId !== tokenUserId) {
+    //   return res.status(403).json({ message: "Not authorized to modify this trajet" });
+    // }
+
+    if (trajet.seatsAvailable <= 0) {
+      return res.status(400).json({ message: "Aucune place disponible" });
+    }
+
+    const updated = await prisma.trajet.update({
+      where: { id },
+      data: {
+        seatsAvailable: {
+          decrement: 1, // ⬅️ Décrémente proprement avec Prisma
+        },
+      },
+    });
+
+    res.status(200).json(updated);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to reduce place" });
+  }
+};
+
+
+// POST /trajet/:id/reserver
+export const  reserverTrajet= async (req, res) => {
+  const { userId } = req.body;
+  const trajetId = req.params.id;
+
+  try {
+    const trajet = await prisma.trajet.findUnique({
+      where: { id: trajetId },
+    });
+
+    if (!trajet) return res.status(404).json({ message: 'Trajet introuvable' });
+
+    if (trajet.seatsAvailable <= 0) {
+      return res.status(400).json({ message: 'Aucune place disponible' });
+    }
+
+    const updatedTrajet = await prisma.trajet.update({
+      where: { id: trajetId },
+      data: {
+        seatsAvailable: { decrement: 1 },
+        status: trajet.seatsAvailable === 1 ? 'COMPLET' : trajet.status,
+          lastUpdateMessage: "✅ Une place a été réservée.",
+
+      },
+    });
+
+       // Récupérer les informations du conducteur en utilisant le userId du trajet
+     
+    console.log(`🔔 [NOTIFICATION] Le chauffeur (ID: ${trajet.userId}) a une place en moins dans le trajet ${trajet.id}`);
+     // Récupérer l'utilisateur qui a réservé (le passager)
+    
+   
+    
+    
+    // Réponse après réservation
+    res.status(200).json({
+      message: 'Trajet réservé avec succès', trajet: updatedTrajet,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Erreur lors de la réservation' });
+  }
+};
 

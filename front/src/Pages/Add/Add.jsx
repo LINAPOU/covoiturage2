@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import AxiosApi from "../../Lib/AxiosApi.js";
 import Cloudinary from "../../Componenents/Cloudinary/Cloudinary";
 import { useNavigate } from "react-router-dom";
@@ -13,22 +13,7 @@ function Add() {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-const { user } = useContext(AuthContext);
-
-    useEffect(() => {
-      if (!user || !user.isDriverValidated) {
-        alert("Vous devez être validé comme chauffeur pour publier un trajet.");
-        navigate("/authorisation"); // Redirige vers envoi de documents
-      }
-    }, [user, navigate]);
-
-
-
-
-
-
-
-
+  const { user } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,14 +35,15 @@ const { user } = useContext(AuthContext);
           images: images,
         },
         trajetDetail: {
-          pet: inputs.pet,
-          description: inputs.description,
-          smoker: inputs.smoker,
-          music: inputs.music,
-          ac: inputs.ac,
-          luggage: inputs.luggage,
-          discussion: inputs.discussion,
+          description: value,
+          pet: inputs.pet === "true", // Convertir 'true'/'false' en booléen
+          smoker: inputs.smoker === "true",
+          music: inputs.music === "true",
+          ac: inputs.ac === "true",
+          luggage: inputs.luggage, // Les bagages sont des chaînes de caractères (Petit, Moyen, Grand)
+          discussion: inputs.discussion, // Niveau de discussion
         },
+       
       });
 
       navigate(`/publication/${res.data.id}`);
@@ -68,9 +54,7 @@ const { user } = useContext(AuthContext);
   };
 
   return (
-    
     <div className="addTrajetPage">
-     
       <div className="addTrajetFormContainer">
         <h1>Ajouter un trajet</h1>
         <div className="addTrajetWrapper">
@@ -118,7 +102,6 @@ const { user } = useContext(AuthContext);
               />
             </div>
 
-           
             <div className="addTrajetItem">
               <label htmlFor="status">Statut</label>
               <select name="status">
@@ -199,9 +182,9 @@ const { user } = useContext(AuthContext);
         <Cloudinary
           uwConfig={{
             multiple: true,
-            cloudName: "lamadev",
-            uploadPreset: "estate",
-            folder: "posts",
+            cloudName: "dxksn2jnl",
+            uploadPreset: "covoituragelina",
+            multiple: true,
           }}
           setState={setImages}
         />
