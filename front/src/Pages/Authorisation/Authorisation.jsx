@@ -93,11 +93,11 @@ function Authorisation() {
       <div className="driver-obligations">
         <h2>Réglementation du conducteur</h2>
         <ul>
-          <li>Avoir des documents valides</li>
+          <li>Avoir plus de 21 ans</li>
+          <li>Posséder un permis de conduire valide depuis au moins 2ans</li>
           <li>Avoir un véhicule en bon état</li>
-          <li>Respecter les horaires indiqués</li>
-          <li>Assurer la sécurité des passagers</li>
-          <li>Être ponctuel et courtois</li>
+          <li>Fournir une pièce d'identité valide</li>
+          <li>Photos  récentes</li>
 
         </ul>
       </div>

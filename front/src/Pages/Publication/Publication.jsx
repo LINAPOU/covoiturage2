@@ -85,7 +85,10 @@ function Publication() {
               <div className="trajet">
                 <h1>{trajet.title}</h1>
                 <div className="user">
-                  <img src={trajet.user?.avatar} alt="avatar" />
+                  <img
+                    src={trajet.user?.avatar || "/user.png"}
+                    alt="USER.png"
+                  />
                   <span>{trajet.user?.username}</span>
                 </div>
                 <div className="locations">

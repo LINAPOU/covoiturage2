@@ -8,7 +8,7 @@ import React from "react";
 
 function Homepage() {
   return (
-    <div>
+    <div style={{ overflow: "hidden" }}>
       <Header />
       <Hero />
       <Valeur />

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext, } from "../../Context/AuthContext"; // Assurez-vous d'importer votre contexte utilisateur
 import AxiosApi from "../../Lib/AxiosApi";
-import { FaCar } from "react-icons/fa";
+import { FaCar, FaChair } from "react-icons/fa";
 import "./Card.css";
 function Card({ item }) {
   // Récupérer l'utilisateur connecté depuis le contexte (ou via un autre moyen, si nécessaire)
@@ -41,7 +41,7 @@ function Card({ item }) {
     <div className="trajet-card-container">
       <Link to={`/publication/${item.id}`} className="trajet-card-img-wrapper">
         <img
-          src={item.imgs || "trip.jpg"}
+          src={item.imgs || "trip3.jpg"}
           alt="Trajet"
           className="trajet-card-img"
         />
@@ -52,26 +52,25 @@ function Card({ item }) {
         </h2>
         <p className="trajet-card-location">
           <span>
-               <FaCar />
-            
-            {item.departingLocation} → {item.arrivalLocation} ({item.category})
+            De: {item.departingLocation} <br /> <br /> À: {item.arrivalLocation} (
+            {item.category})
           </span>
           <p className="trajet-card-time">
             Date: {new Date(item.departingDate).toLocaleDateString("fr-FR")} à{" "}
             {item.departingTime}
           </p>
         </p>
+
         <p className="trajet-card-price">{item.price}DA</p>
 
         <div className="trajet-card-bottom">
           <div className="trajet-card-icons">
             <div className="trajet-feature">
-              <img src="/seats.jpg" alt="Places" className="trajet-icon" />
+              <FaChair />
               <span className={item.seatsAvailable === 0 ? "no-seats" : ""}>
                 {item.seatsAvailable} places dispo
               </span>
             </div>
-
             <button onClick={handleContact} className="trajet-card-icon">
               Contacter le conducteur
             </button>

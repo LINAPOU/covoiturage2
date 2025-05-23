@@ -27,21 +27,22 @@ function Valeur() {
       <div className="padding innerwidth flexcenter v-container">
         {/* left side */}
         <div className="v-left  val-image">
-          <img src="./cycle.gif" alt="Valeurs" />
+          <img src="./valeurimg.jpg" alt="Valeurs" />
         </div>
 
         {/* right side */}
         <div className="flexcolstart v-right">
           <span
-            style={{ fontSize: "45px", fontWeight: "bolder", color: "#6EE7B7" }}
+            style={{ fontSize: "45px", fontWeight: "bolder", color: "#3372e3" }}
           >
             Ce que nous souhaitons vous transmettre
           </span>
           <span>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            <br />
-            Magnam quos dignissimos nobis pariatur dicta totam in dolorem dolor
-            minima illum!
+             Partagez vos trajets réguliers ou occasionnels et récupérez une
+            partie de vos frais. Notre processus de vérification assure votre
+            sécurité et celle de vos passagers, inscriez-vous pour devenir
+            conducteur. <br />
+           
           </span>
 
           <Accordion allowMultipleExpanded={false} preExpanded={[0]}>

@@ -63,7 +63,7 @@
 }
 
 .main-button {
-    background-color: #10B981;
+    background-color: #6EE7B7;
     padding: 0.5rem 1rem;
     font-weight: bold;
     text-decoration: none;
@@ -71,9 +71,7 @@
     transition: background 0.3s ease;
 }
 
-.main-button:hover {
-    background-color: #e6bc36;
-}
+
 .hero-wrapper {
     position: relative;
     overflow: hidden;

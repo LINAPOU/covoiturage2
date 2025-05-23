@@ -18,7 +18,7 @@
 .addTrajetFormContainer h1 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #f8d149;
+    color: #66c1c3;
     text-align: center;
     font-weight: 600;
 }
@@ -61,7 +61,7 @@
 }
 
 .addTrajetButton {
-    background:#f8d149;
+    background:#66c1c3;
     color: #fff;
     padding: 14px;
     font-size: 1rem;

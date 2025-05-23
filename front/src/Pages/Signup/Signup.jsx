@@ -89,7 +89,7 @@ function SignUp() {
             </button>
             {error && <span className="errorMessage">{error}</span>}
             <Link to="/login" className="signupLink">
-              Already have an account? Login here
+             Vous avez déjà un compte? Connectez-vous ici
             </Link>
           </form>
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 import "./Hero.css";
 import { FaCar, FaMapPin } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import backgroundImage from "../../assets/cringe.jpg"; // ← import de l'image
+import backgroundImage from "../../assets/home4.jpg"; // ← import de l'image
 
 function Hero() {
   return (
@@ -15,7 +15,7 @@ function Hero() {
         <div className="flexcolstart hero-left">
           <div className="hero-title">
             <h1>
-              Découvrez <span style={{ color: " #6EE7B7" }}>ZeRoad ! </span>{" "}
+              Découvrez <span style={{ color: " #6EE7B7" }}>MOBRIDE ! </span>{" "}
               <br />
               Voyagez ensemble, <br />
               économisez plus

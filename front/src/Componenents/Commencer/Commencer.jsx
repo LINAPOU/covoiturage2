@@ -9,7 +9,7 @@ function Commencer() {
         <div className="flexcolcenter inner-container">
           <span className="first-text">Venez faire un tour !</span>
           <br />
-          <span className="second-text">Inscrivez vous sur CEVROUTE</span>
+          <span className="second-text">Inscrivez vous sur MOBRIDE</span>
           <br />
 
           <span className="second-text">

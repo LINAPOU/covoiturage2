@@ -1,12 +1,14 @@
 /* 🔥 ListeTrajets Styles — Extra Touch */
 
 .listetrajets-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    background:white;
-    min-height: 100vh;
+   
+    display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 50px;
+        padding: 20px;
+        justify-content: center;
+        overflow: hidden;
+
 }
 
 /* Section principale */
@@ -40,12 +42,13 @@
 
 /* Cartes de trajets */
 .listetrajets-cards {
-    flex-grow: 1;
+    flex-grow: 2;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
     margin-top: 20px;
     margin-bottom: 40px;
+    ;
 }
 
 .listetrajets-cards .card {
@@ -108,6 +111,6 @@
     }
 
     .filter-container {
-        width: 100%;
+        width: 50%;
     }
 }

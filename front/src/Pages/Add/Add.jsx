@@ -69,8 +69,14 @@ function Add() {
             </div>
             <div className="addTrajetItem">
               <label htmlFor="departingDate">Date de départ</label>
-              <input id="departingDate" name="departingDate" type="date" />
+              <input
+                id="departingDate"
+                name="departingDate"
+                type="date"
+                min={new Date().toISOString().split("T")[0]}
+              />
             </div>
+
             <div className="addTrajetItem">
               <label htmlFor="departingLocation">Lieu de départ</label>
               <input
@@ -176,6 +182,10 @@ function Add() {
         </div>
       </div>
       <div className="addTrajetSideContainer">
+        <h1 style={{ color: "#66c1c3", fontSize: "10px", width: "200px" }}>
+          Ajoutez DES PHOTOS DE VOTRE VOITURE
+        </h1>
+
         {images.map((image, index) => (
           <img src={image} key={index} alt="" />
         ))}

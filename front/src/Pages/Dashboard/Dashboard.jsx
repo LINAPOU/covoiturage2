@@ -70,13 +70,13 @@ function Dashboard() {
   return (
     <div className="dashboard-layout">
       <aside className="sidebar">
-        <h1>Admin👋</h1>
+      <h1>Admin</h1>
         <nav>
           <Link to="/Srvclient">
             <FaComments /> Service Client
           </Link>
           <Link to="/stats">
-            <FaComments /> Service Client
+            <FaComments />  Nos stats
           </Link>
         </nav>
       </aside>

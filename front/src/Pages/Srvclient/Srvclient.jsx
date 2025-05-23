@@ -55,7 +55,7 @@ const Srvclient = () => {
                   <br />
 
                   <strong>Avatar:</strong>
-                  <img src={msg.user?.avatar || "Avatar.jpg"} alt="" />
+                  <img src={msg.user?.avatar || "USER.png"} alt="" />
                 </div>
                 <div className="srvclient-message-body">
                   <strong>Message:</strong> {msg.message}

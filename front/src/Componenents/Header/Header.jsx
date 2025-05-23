@@ -8,7 +8,7 @@ function Header() {
   return (
     <header className="h-wrapper">
       <div className="h-container">
-        <img src="./ZEROAD2.jpg" alt="logo" className="h-logo" />
+        <img src="./MOBRIDE.jpg" alt="logo" className="h-logo" />
 
         {/* Hamburger icon */}
         <div className="h-burger" onClick={() => setMenuOpen(!menuOpen)}>

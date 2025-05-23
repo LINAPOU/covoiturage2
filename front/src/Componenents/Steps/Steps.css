@@ -8,7 +8,7 @@
 .main-title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #6EE7B7
+    color: #3372e3
      ;
 }
 
@@ -38,6 +38,7 @@
 .step-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: #6EE7B7;
 }
 
 .step-title {
